@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"math/rand/v2"
+	"math/rand"
 	"net/http"
 	"time"
 
@@ -35,7 +35,7 @@ func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		start := time.Now()
 
-		_, _ = batch.Do(rand.IntN(100))
+		_, _ = batch.Do(rand.Intn(100))
 
 		fmt.Println("Elapsed time:", time.Since(start))
 		fmt.Fprintf(w, "Hello, World!\n")

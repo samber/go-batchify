@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"math/rand/v2"
+	"math/rand"
 	"net/http"
 	"strconv"
 	"time"
@@ -33,7 +33,7 @@ func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		start := time.Now()
 
-		key := rand.IntN(30)
+		key := rand.Intn(30)
 		keyStr := strconv.Itoa(key)
 		_, _, _ = group.Do(keyStr, func() (interface{}, error) {
 			return batch.Do(key)
