@@ -13,5 +13,6 @@ func TestNewBuffer(t *testing.T) {
 	buf := newBuffer[int, string](bufferSize)
 
 	// is.Equal(bufferSize, cap(buf.values))
+	is.Nil(buf.err)
 	is.Equal(0, buf.size)
 }

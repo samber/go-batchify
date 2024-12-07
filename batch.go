@@ -67,7 +67,7 @@ func (b *batchImpl[I, O]) Do(input I) (output O, err error) {
 	currentBuffer.wg.Wait()
 
 	// outputs[input] might be empty
-	return currentBuffer.values[input], nil
+	return currentBuffer.values[input], currentBuffer.err
 }
 
 func (b *batchImpl[I, O]) Stop() {
@@ -106,11 +106,10 @@ func (b *batchImpl[I, O]) Flush() {
 // execCallback must be called out of mutex lock to prevent slowdown due to long-running callback.
 func (b *batchImpl[I, O]) execCallback(buffer *buffer[I, O]) {
 	go buffer.once.Do(func() {
-		if buffer.size == 0 {
-			return
+		if buffer.size > 0 {
+			buffer.values, buffer.err = b.do(lo.Keys(buffer.values))
 		}
 
-		b.do(lo.Keys(buffer.values))
 		buffer.wg.Done()
 	})
 }
