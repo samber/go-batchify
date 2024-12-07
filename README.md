@@ -14,13 +14,13 @@ Batchify will group and deduplicate concurrent tasks to reduce resource consumpt
 
 Example:
 - reduce in-flight requests to a database
-- dedup similar requests during an short period of time
+- dedupe similar requests during a short period of time
 
-This library is thread safe.
+This library is thread-safe.
 
-<center>
+<div align="center">
     <img title="Schema" src="./doc/assets/flow.png">
-</center>
+</div>
 
 ## 🚀 Install
 
