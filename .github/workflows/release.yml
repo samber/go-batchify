@@ -26,7 +26,7 @@ jobs:
 
     # remove tests in order to clean dependencies
     - name: Remove xxx_test.go files
-      run: rm -rf *_test.go ./examples ./images
+      run: rm -rf *_test.go ./example ./doc
 
     # cleanup test dependencies
     - name: Cleanup dependencies
