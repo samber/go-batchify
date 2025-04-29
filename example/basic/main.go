@@ -38,7 +38,7 @@ func main() {
 		_, _ = batch.Do(rand.Intn(100))
 
 		fmt.Println("Elapsed time:", time.Since(start))
-		fmt.Fprintf(w, "Hello, World!\n")
+		_, _ = fmt.Fprintf(w, "Hello, World!\n") //nolint:errcheck
 	})
 
 	fmt.Println("Starting server at port 4242")

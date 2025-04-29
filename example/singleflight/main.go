@@ -40,7 +40,7 @@ func main() {
 		})
 
 		fmt.Println("Elapsed time:", time.Since(start))
-		fmt.Fprintf(w, "Hello, World!\n")
+		_, _ = fmt.Fprintf(w, "Hello, World!\n") //nolint:errcheck
 	})
 
 	fmt.Println("Starting server at port 4242")
